@@ -1,0 +1,23 @@
+{
+  "type": "graph",
+  "title": "Substation Load Over Time",
+  "targets": [
+    {
+      "expr": "substation_current_load{instance=\"substation1:5002\"}",
+      "legendFormat": "Substation 1",
+      "refId": "A"
+    },
+    {
+      "expr": "substation_current_load{instance=\"substation2:5002\"}",
+      "legendFormat": "Substation 2",
+      "refId": "B"
+    },
+    {
+      "expr": "substation_current_load{instance=\"substation3:5002\"}",
+      "legendFormat": "Substation 3",
+      "refId": "C"
+    }
+  ],
+  "gridPos": { "x": 0, "y": 0, "w": 24, "h": 9 },
+  "datasource": "Prometheus"
+}

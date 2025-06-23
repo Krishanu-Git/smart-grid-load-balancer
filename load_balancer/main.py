@@ -31,6 +31,7 @@ def route_request():
     logging.info(f"Routing vehicle {vehicle_id} to {target}")
     try:
         res = requests.post(f"{target}/charge", json={"vehicle_id": vehicle_id})
+        logging.debug(f"Response from {target}: {res.status_code} {res.json()}")
         return jsonify({"status": "Charging started", "substation": target}), 200
     except Exception as e:
         logging.error(f"Failed to forward request to {target}: {e}")

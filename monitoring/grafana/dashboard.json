@@ -1,23 +1,52 @@
 {
-  "type": "graph",
-  "title": "Substation Load Over Time",
-  "targets": [
+  "title": "Smart Grid Dashboard",
+  "timezone": "browser",
+  "refresh": "5s",
+  "schemaVersion": 36,
+  "version": 1,
+  "panels": [
     {
-      "expr": "substation_current_load{instance=\"substation1:5002\"}",
-      "legendFormat": "Substation 1",
-      "refId": "A"
-    },
-    {
-      "expr": "substation_current_load{instance=\"substation2:5002\"}",
-      "legendFormat": "Substation 2",
-      "refId": "B"
-    },
-    {
-      "expr": "substation_current_load{instance=\"substation3:5002\"}",
-      "legendFormat": "Substation 3",
-      "refId": "C"
+      "type": "timeseries",
+      "title": "Substation Load (Live)",
+      "id": 1,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "targets": [
+        {
+          "expr": "substation_current_load",
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      }
     }
   ],
-  "gridPos": { "x": 0, "y": 0, "w": 24, "h": 9 },
-  "datasource": "Prometheus"
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  }
 }
